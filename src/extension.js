@@ -30,14 +30,7 @@ function parseTypes(propTypes) {
   return parsed;
 }
 
-function defaultIt() {
-  const activeEditor = vscode.window.activeTextEditor;
-
-  if (!activeEditor) {
-    vscode.window.showInformationMessage('Open a file first to generate defaultProps');
-    return;
-  }
-
+function defaultIt(activeEditor, edit) {
   const selectedText = getSelectedText(activeEditor);
 
   const parsedTypes = parseTypes(selectedText);
@@ -45,13 +38,10 @@ function defaultIt() {
     `${acc}, ${key}: ${defaultMapper[value]}`
   ), '');
 
-  console.log(stringified);
-  const insertPosition = activeEditor.selection.active.line + 2;
-  vscode.activeTextEditor.edit((builder) => {
-    builder.insert(insertPosition, `{ ${stringified} }`);
-  })
+  const insertPosition = activeEditor.selection.end.translate(2);
+  edit.insert(insertPosition, `{ ${stringified} }`);
 }
 
 exports.activate = () => {
-  vscode.commands.registerCommand('extension.defaultIt', defaultIt);
+  vscode.commands.registerTextEditorCommand('extension.defaultIt', defaultIt);
 }
