@@ -12,3 +12,5 @@ MyComponent.defaultProps = {
 ```
 
 And... **Default It** can help you with it! Just select your propTypes and run *"Generate defaultProps"*!
+
+![Default It](images/howto.gif)
