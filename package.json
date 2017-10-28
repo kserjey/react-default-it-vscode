@@ -2,7 +2,7 @@
     "name": "react-default-it",
     "displayName": "Default It (React)",
     "description": "DefaultProps based on PropTypes",
-    "version": "0.7.0",
+    "version": "0.8.0",
     "publisher": "kserjey",
     "engines": {
         "vscode": "^1.17.0"
