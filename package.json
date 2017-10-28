@@ -2,7 +2,7 @@
     "name": "react-default-it",
     "displayName": "Default It (React)",
     "description": "DefaultProps based on PropTypes",
-    "version": "0.5.0",
+    "version": "0.7.0",
     "publisher": "kserjey",
     "engines": {
         "vscode": "^1.17.0"
@@ -30,5 +30,8 @@
         "vscode": "^1.1.5",
         "eslint": "^4.6.1"
     },
-    "dependencies": {}
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/kserjey/react-default-it.git"
+    }
 }
