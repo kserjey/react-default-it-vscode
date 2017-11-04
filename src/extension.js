@@ -22,6 +22,17 @@ function getSelectedText(editor) {
   return editor.document.getText(selectionRange);
 }
 
+function insertTo(editor, text, numberOfLines = 0, location = editor.selection.end) {
+  editor.edit((builder) => {
+    const newLines = Array(numberOfLines).join('\n');
+    builder.insert(location, `${newLines}${text}`);
+  }).then(() => {
+    const selectionStart = new vscode.Position(location.line + numberOfLines - 1, 0);
+    const selectionEnd = editor.selection.end;
+    editor.selection = new vscode.Selection(selectionStart, selectionEnd);
+  })
+}
+
 function mapTypes(propTypes) {
   const parsed = {};
 
@@ -35,16 +46,22 @@ function mapTypes(propTypes) {
   return parsed;
 }
 
-function defaultIt(activeEditor, edit) {
+function defaultIt() {
+  const activeEditor = vscode.window.activeTextEditor;
+
+  if (!activeEditor) {
+		vscode.window.showInformationMessage('Open a file first to generate defaultProps');
+		return;
+  }
+
   const selectedText = getSelectedText(activeEditor);
 
   const mappedTypes = mapTypes(selectedText);
-  const stringified = stringifyObject(mappedTypes);
+  const stringified = stringifyObject(mappedTypes)
 
-  const insertPosition = activeEditor.selection.end.translate(3);
-  edit.insert(insertPosition, stringified);
+  insertTo(activeEditor, stringified, 3);
 }
 
 exports.activate = () => {
-  vscode.commands.registerTextEditorCommand('extension.defaultIt', defaultIt);
+  vscode.commands.registerCommand('extension.defaultIt', defaultIt);
 }
