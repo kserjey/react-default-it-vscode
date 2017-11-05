@@ -2,7 +2,7 @@
     "name": "react-default-it",
     "displayName": "Default It (React)",
     "description": "DefaultProps based on PropTypes",
-    "version": "0.8.0",
+    "version": "0.8.1",
     "publisher": "kserjey",
     "icon": "default-it.png",
     "license": "MIT",
@@ -13,7 +13,9 @@
         "Other"
     ],
     "keywords": [
-        "react", "defautProps", "propTypes"
+        "react",
+        "defautProps",
+        "propTypes"
     ],
     "activationEvents": [
         "onCommand:extension.defaultIt"
