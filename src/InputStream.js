@@ -12,14 +12,19 @@ module.exports = class InputStream {
     return this.input[this.position];
   }
 
+  next() {
+    this.position += 1;
+    return this.current;
+  }
+
   readWhile(test) {
-    let readed = '';
+    let read = '';
 
     while (!this.done && test(this.current)) {
-      readed += this.current;
+      read += this.current;
       this.position += 1;
     }
 
-    return readed;
+    return read;
   }
 };
