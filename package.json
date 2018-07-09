@@ -1,7 +1,7 @@
 {
     "name": "react-default-it",
-    "displayName": "Default It (React)",
-    "description": "DefaultProps based on PropTypes",
+    "displayName": "React Default It",
+    "description": "Generate defaultProps based on propTypes",
     "version": "0.8.1",
     "publisher": "kserjey",
     "icon": "images/icon.png",
