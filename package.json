@@ -4,7 +4,7 @@
     "description": "DefaultProps based on PropTypes",
     "version": "0.8.1",
     "publisher": "kserjey",
-    "icon": "default-it.png",
+    "icon": "images/icon.png",
     "license": "MIT",
     "engines": {
         "vscode": "^1.17.0"
