@@ -31,6 +31,8 @@
         ]
     },
     "scripts": {
+        "nearley:build": "nearleyc ./src/grammar.ne --out ./src/grammar.js",
+        "nearley:test": "nearley-test ./src/grammar.js",
         "postinstall": "node ./node_modules/vscode/bin/install",
         "test": "node ./node_modules/vscode/bin/test"
     },
@@ -42,5 +44,7 @@
         "type": "git",
         "url": "https://github.com/kserjey/react-default-it.git"
     },
-    "dependencies": {}
+    "dependencies": {
+        "nearley": "^2.13.0"
+    }
 }
