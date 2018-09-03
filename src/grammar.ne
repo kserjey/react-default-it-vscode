@@ -1,11 +1,13 @@
 expression -> _ shape _  {% d => d[1] %}
 shape -> "{" _ pair (_ "," _ pair):* _ "}" {% extractObject %}
-pair -> string _ ":" _ string {% ([key,,,,value]) => [key.join(''), value.join('')] %}
+pair -> string _ ":" _ value {% ([key,,,,value]) => [key.join(''), value.join('')] %}
+value -> "PropTypes.":? string {% ([,type]) => type %}
 
-_ -> null | [\s]:+ {% () => null %}
+_ -> [\s]:* {% () => null %}
 string -> [\w]:+ {% id %}
 
 @{%
+
 const pairToObject = ([key, value]) => ({ key: value })
 
 function extractObject(d) {
@@ -15,4 +17,5 @@ function extractObject(d) {
     { [firstKey]: firstValue }
   );
 }
+
 %}
